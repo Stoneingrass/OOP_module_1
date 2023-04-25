@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title>Store of records: genres.</title>
+
+        <style>
+            h1 {
+                font-family: monospace;
+                font-size: xxx-large;
+                text-align: center;
+            }
+
+            a {
+                font-family: Impact, sans-serif;
+                font-size: xx-large;
+            }
+
+            div {
+                display: flex;
+                align-items: center;
+                justify-content: center
+            }
+
+            table {
+                border: 1px dashed;
+                border-spacing: 0;
+            }
+
+            td {
+                text-align: center;
+                border: 1px dashed;
+                align-items: center;
+                justify-content: center;
+                vertical-align: middle;
+                padding: 15px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div>
+            <a href="/">Main page</a>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <a href="/records/">Records</a>
+        </div>
+
+        <hr>
+
+        <div>
+            <form method="post" action="/genres/add">
+                <input type="text" name="title" placeholder="Genres title"/>
+                <button type="submit">Add.</button>
+            </form>
+        </div>
+
+        <hr>
+
+        <h1>Genres</h1>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Genres</th>
+                        <th>Record</th>
+                        <th>Delete</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#genres}}
+                        <tr>
+                            <td>{{id}}</td>
+                            <td>{{title}}</td>
+                            <td>
+                                <ul>
+                                    {{#records}}
+                                        <li>{{title}}</li>
+                                    {{/records}}
+                                </ul>
+                            </td>
+                            <td>
+                                <form method="post" action="/genres/delete/{{id}}">
+                                    <button type="submit">Delete.</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="get" action="/genres/edit/{{id}}">
+                                    <button type="submit">Edit.</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {{/genres}}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

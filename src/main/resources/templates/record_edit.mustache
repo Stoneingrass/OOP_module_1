@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Store of records: edit record.</title>
+
+        <style>
+            h1 {
+                font-family: monospace;
+                font-size: xxx-large;
+                text-align: center;
+            }
+
+            a {
+                font-family: Impact, sans-serif;
+                font-size: xx-large;
+            }
+
+            div {
+                display: flex;
+                align-items: center;
+                justify-content: center
+            }
+
+            table {
+                border: 1px dashed;
+                border-spacing: 0;
+            }
+
+            td {
+                text-align: center;
+                border: 1px dashed;
+                align-items: center;
+                justify-content: center;
+                vertical-align: middle;
+                padding: 15px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div>
+            <form method="post" action="/records/save">
+                <input type="hidden" name="id" value="{{record.id}}"/>
+                <input type="text" name="song" value="{{record.song}}"/>
+                <input type="text" name="performer" value="{{record.performer}}"/>
+                <input type="number" name="cost" step="any" value="{{record.cost}}"/>
+                <select name="genre_id">
+                {{#genres}}
+                    <option value="{{id}}">{{title}}</option>
+                {{/genres}}
+                </select>
+                <button type="submit">Save.</button>
+            </form>
+        </div>
+    </body>
+</html>
